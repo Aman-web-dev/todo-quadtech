@@ -1,23 +1,21 @@
 import { useState } from "react";
 import { connect } from "react-redux";
-import {addTodo} from '../redux/index'
+import { addTodo } from "../redux/index";
 
 function TodoInput(props) {
   const [todo, setTodo] = useState({
-    title: "",
-    description: "",
-    status: "",
+    // id:"",
+    // title: "",
+    // description: "",
+    // currentStatus: "",
   });
 
   const handleTodoInput = async (e) => {
     e.preventDefault();
-    props.addTodo(todo)
-    setTodo({
-      title: "",
-      description: "",
-      status: "",
-    });
-    props.close()
+    const todo_id = JSON.stringify(Date.now());
+    props.addTodo({ ...todo, id: todo_id });
+    setTodo({ id: "", title: "", description: "", currentStatus: "" });
+    props.close();
   };
 
   return (
@@ -66,20 +64,18 @@ function TodoInput(props) {
             className="block text-gray-700 text-sm font-bold mb-2"
             htmlFor="Todo"
           >
-            Status
+            currentStatus
           </label>
           <select
             id="countries"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            value={todo.status}
+            value={todo.currentStatus}
             onChange={(e) => {
-              setTodo({ ...todo, status: e.target.value });
+              setTodo({ ...todo, currentStatus: e.target.value });
             }}
             required
           >
-            <option value="" disabled>
-              Select
-            </option>
+       
             <option value="todo">Todo</option>
             <option value="done">Done</option>
             <option value="cancelled">Cancelled</option>
@@ -105,5 +101,4 @@ const mapDisPatchToProps = (dispatch) => {
   };
 };
 
-
-export default connect(null,mapDisPatchToProps)(TodoInput);
+export default connect(null, mapDisPatchToProps)(TodoInput);
