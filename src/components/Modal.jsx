@@ -1,6 +1,8 @@
 import CloseIcon from "./CloseIcon";
 import TodoInput from "./TodoInput";
 
+
+//simple modal just to keep todo input inside it
 const Modal = (props) => {
   return (
     <div

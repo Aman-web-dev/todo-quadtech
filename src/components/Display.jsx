@@ -5,13 +5,13 @@ import { setTodo } from "../redux";
 
 function TodoDisplay(props) {
 
-  const [firstLoad,setFirstLoad]=useState(true)
-
+  //this state will keeep tract that it is a initial load and will not change again
+  const [firstLoad, setFirstLoad] = useState(true);
 
   console.log("I changed");
 
+  //this will get the saved todos from local storage
   useEffect(() => {
-
     const storedArrayString = localStorage.getItem("todos");
     if (storedArrayString) {
       const array = JSON.parse(storedArrayString);
@@ -20,18 +20,21 @@ function TodoDisplay(props) {
       console.log("No array found in localStorage");
     }
   }, []);
-  
+
+
+//this will add the todos in the local storage 
   useEffect(() => {
-    console.log("todos hai ji",props.todos,firstLoad)
-      if(!firstLoad){
-        console.log("setting the item");
-        localStorage.setItem("todos", JSON.stringify(props.todos));  
-      }
-      setFirstLoad(false)
-  }, [props.todos]); 
-  
+    console.log("todos hai ji", props.todos, firstLoad);
+    if (!firstLoad) {
+      console.log("setting the item");
+      localStorage.setItem("todos", JSON.stringify(props.todos));
+    }
+    setFirstLoad(false);
+  }, [props.todos]);
+
   return (
     <div className="flex flex-wrap gap-4 p-4">
+      //mapping all teh todos and passing props to them
       {props.todos.map((elem, index) => {
         return (
           <TodoCards
@@ -48,12 +51,16 @@ function TodoDisplay(props) {
   );
 }
 
+
+//this will map the state to the component using connect
 const mapStateToProps = (state) => {
   return {
     todos: state.todos,
   };
 };
 
+
+//this will map the dispatch to the component using connect
 const mapActionsToProps = (dispatch) => {
   return {
     setTodo: (array) => {
@@ -62,4 +69,6 @@ const mapActionsToProps = (dispatch) => {
   };
 };
 
+
+//using a connect method from redux to connect props and actions to the component
 export default connect(mapStateToProps, mapActionsToProps)(TodoDisplay);

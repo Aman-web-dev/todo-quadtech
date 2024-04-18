@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { connect } from "react-redux";
-import { addTodo } from "../redux";
 import TodoDisplay from "./Display";
 import Modal from "./Modal";
 import UploadBtn from "./UploadBtn";
 
+
+//this is todo conatiner that will contain all teh todos in it and it will contain the todo input also 
 function TodoContainer(props) {
   const [showInput, setShowInput] = useState(false);
 
@@ -45,7 +45,10 @@ const Heading = () => {
         Aman
       </h1>
       <p className="text-lg font-normal text-gray-500 lg:text-xl dark:text-white">
-      Efficiently manage your tasks with QuadTech's Todo App, powered by Redux and React. Streamline productivity with state management and a user-friendly interface for organizing, tracking, and completing tasks effectively
+        Efficiently manage your tasks with QuadTech's Todo App, powered by Redux
+        and React. Streamline productivity with state management and a
+        user-friendly interface for organizing, tracking, and completing tasks
+        effectively
       </p>
     </div>
   );

@@ -1,14 +1,17 @@
 import { connect } from "react-redux";
 import { deleteTodo, editTodo } from "../redux";
 
+  //todo card that will keep the track of all the todos 
 
 function TodoCards(props) {
+
+
+  //handles todo Deletion
   function handleTodoDelete(todo_id) {
-  
     props.deleteTodo(todo_id)
   }
 
-
+//handles todo Update
   function handleUpdate(index,data) {
     props.editTodo(index,data)
   }
@@ -65,7 +68,7 @@ function TodoCards(props) {
 }
 
 
-
+//connecting the actions with component using connect
 const mapActionAsProps=dispatch=>{
   return{
     deleteTodo:(id)=>dispatch(deleteTodo(id)),
