@@ -4,7 +4,9 @@ import { connect } from "react-redux";
 import { setTodo } from "../redux";
 
 function TodoDisplay(props) {
-  const [loaded, setLoaded] = useState();
+
+  const [firstLoad,setFirstLoad]=useState(true)
+
 
   console.log("I changed");
 
@@ -14,18 +16,18 @@ function TodoDisplay(props) {
     if (storedArrayString) {
       const array = JSON.parse(storedArrayString);
       props.setTodo(array);
-      setLoaded(true);
     } else {
       console.log("No array found in localStorage");
     }
   }, []);
   
   useEffect(() => {
-    console.log("todos hai ji",props.todos)
-      if(props.todos.length!=0){
+    console.log("todos hai ji",props.todos,firstLoad)
+      if(!firstLoad){
         console.log("setting the item");
         localStorage.setItem("todos", JSON.stringify(props.todos));  
       }
+      setFirstLoad(false)
   }, [props.todos]); 
   
   return (
