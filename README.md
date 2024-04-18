@@ -23,5 +23,10 @@ a dialogue box will apppear
 
 ### `fill title , description and status`
 
+now click add Todo and your todo will be added 
+
+
+### `you can edit the todo by simply using the select button or can delete the todo by delete button`
+
 
 
