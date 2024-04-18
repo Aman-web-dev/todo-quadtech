@@ -38,15 +38,14 @@ export default TodoContainer;
 
 const Heading = () => {
   return (
-    <div className="">
+    <div className="p-4">
       <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
         Keep Track of Your Todo's with
         <span className="text-blue-600 dark:text-orange-500"> Todo</span> By
         Aman
       </h1>
       <p className="text-lg font-normal text-gray-500 lg:text-xl dark:text-white">
-        Here at Flowbite we focus on markets where technology, innovation, and
-        capital can unlock long-term value and drive economic growth.
+      Efficiently manage your tasks with QuadTech's Todo App, powered by Redux and React. Streamline productivity with state management and a user-friendly interface for organizing, tracking, and completing tasks effectively
       </p>
     </div>
   );

@@ -4,17 +4,16 @@ import { addTodo } from "../redux/index";
 
 function TodoInput(props) {
   const [todo, setTodo] = useState({
-    // id:"",
-    // title: "",
-    // description: "",
-    // currentStatus: "",
+    id:"",
+    title: "",
+    description: "",
+    currentStatus: "todo",
   });
 
   const handleTodoInput = async (e) => {
     e.preventDefault();
     const todo_id = JSON.stringify(Date.now());
     props.addTodo({ ...todo, id: todo_id });
-    setTodo({ id: "", title: "", description: "", currentStatus: "" });
     props.close();
   };
 
@@ -75,7 +74,6 @@ function TodoInput(props) {
             }}
             required
           >
-       
             <option value="todo">Todo</option>
             <option value="done">Done</option>
             <option value="cancelled">Cancelled</option>
