@@ -1,6 +1,5 @@
 const initialState = {
   todos: [],
-  filter: "all",
 };
 
 const todoReducer = (state = initialState, action) => {
