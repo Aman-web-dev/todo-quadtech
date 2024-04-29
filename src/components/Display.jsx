@@ -34,7 +34,7 @@ function TodoDisplay(props) {
 
   return (
     <div className="flex flex-wrap gap-4 p-4">
-      //mapping all teh todos and passing props to them
+      
       {props.todos.map((elem, index) => {
         return (
           <TodoCards
